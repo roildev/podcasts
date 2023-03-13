@@ -1,0 +1,26 @@
+.home__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.home__search-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home__search-group .tag {
+    padding: 0 4px;
+    background-color: #2F7BB0;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.home__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}

@@ -12,6 +12,9 @@ module.exports = {
   plugins: ['react', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
-    'import/prefer-default-export': 'off',
+    'import/prefer-default-export': 0,
+    'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/no-array-index-key': 0,
   },
 };

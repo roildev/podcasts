@@ -1,0 +1,35 @@
+.podcast {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 200px;
+    max-width: 200px;
+    overflow: hidden;
+}
+
+.podcast-content {
+    height: 55%;
+    position: relative;
+    padding: 40px 10px 5px;
+    border: 1px solid gray;
+}
+
+.podcast-image {
+    position: absolute;
+    border-radius: 9999px;
+    overflow: hidden;
+    top: -30px;
+    transform: translateX(calc(50% + 20px));
+}
+
+.podcast-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.podcast-author {
+    font-size: 14px;
+    color: gray;
+}
