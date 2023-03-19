@@ -13,7 +13,7 @@ const useGetPodcastById = (podcastId) => {
 
     document.cookie = `${podcastId}=${JSON.stringify(
       podcastData,
-    )}; expires=${expires}; path=/podcast/${podcastId}`;
+    )}; expires=${expires}; path=/`;
   };
 
   const podcastSerialize = (wrapperTrack, episodesCollection) => ({
