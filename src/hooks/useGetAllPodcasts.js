@@ -6,7 +6,7 @@ const useGetAllPodcasts = (limit = 100, genre = '1310') => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-  const [podcasts, setPodcasts] = useState();
+  const [podcasts, setPodcasts] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);

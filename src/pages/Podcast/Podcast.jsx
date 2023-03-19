@@ -6,7 +6,6 @@ import { useGetPodcastById } from '../../hooks';
 import './Podcast.css';
 import { MainLayout } from '../../layouts';
 import { ErrorMessage, Loader } from '../../components';
-import { dateFormat, millisToMinutes } from '../../utils';
 
 function Podcast() {
   const { podcastId } = useParams();
@@ -14,11 +13,7 @@ function Podcast() {
 
   const { description } = location.state;
 
-  const { podcast, episodes, isLoading, error } = useGetPodcastById(podcastId);
-
-  console.log('episodes', episodes);
-
-  const imageSrc = podcast?.artworkUrl100;
+  const { podcast, isLoading, error } = useGetPodcastById(podcastId);
 
   if (error) return <ErrorMessage error={error} />;
 
@@ -32,7 +27,7 @@ function Podcast() {
         <div className="podcast-block podcast-info">
           <div className="podcast-info__item">
             <div className="podcast-info__image">
-              <img src={imageSrc} alt={podcast.artistName} />
+              <img src={podcast.imageSrc} alt={podcast.artistName} />
             </div>
           </div>
           <div className="podcast-info__item">
@@ -49,7 +44,9 @@ function Podcast() {
           </div>
         </div>
         <div className="podcast-episodes-info">
-          <div className="podcast-block">Episodes: {episodes.length}</div>
+          <div className="podcast-block">
+            Episodes: {podcast.episodes.length}
+          </div>
           <div className="podcast-block podcast-episodes">
             <table>
               <thead>
@@ -60,17 +57,15 @@ function Podcast() {
                 </tr>
               </thead>
               <tbody>
-                {episodes.map((episode) => (
-                  <tr key={episode.trackId}>
+                {podcast.episodes.map((episode) => (
+                  <tr key={episode.id}>
                     <td>
-                      <Link
-                        to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`}
-                      >
-                        {episode.trackName}
+                      <Link to={`/podcast/${podcastId}/episode/${episode.id}`}>
+                        {episode.name}
                       </Link>
                     </td>
-                    <td>{dateFormat(episode.releaseDate)}</td>
-                    <td>{millisToMinutes(episode.trackTimeMillis)}</td>
+                    <td>{episode.date}</td>
+                    <td>{episode.duration}</td>
                   </tr>
                 ))}
               </tbody>

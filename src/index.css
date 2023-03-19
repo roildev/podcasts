@@ -6,3 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+a {
+  color: #2F7BB0;
+  text-decoration-color: transparent;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  text-decoration-color: #2F7BB0;
+}
