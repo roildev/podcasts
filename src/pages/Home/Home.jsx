@@ -28,8 +28,10 @@ function Home() {
 
     const podcastsFiltered = podcasts.filter(
       (podcast) =>
-        podcast['im:artist'].label.includes(keyword) ||
-        podcast['im:name'].label.includes(keyword),
+        podcast['im:artist'].label
+          .toLowerCase()
+          .includes(keyword.toLowerCase()) ||
+        podcast['im:name'].label.toLowerCase().includes(keyword.toLowerCase()),
     );
 
     setAllPodcasts(podcastsFiltered);
@@ -39,6 +41,7 @@ function Home() {
   if (error) return <ErrorMessage error={error} />;
 
   if (!allPodcasts) return null;
+  // console.log('allPodcasts', allPodcasts);
   return (
     <MainLayout>
       <div className="home">

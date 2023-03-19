@@ -14,7 +14,7 @@ const useGetAllPodcasts = (limit = 100, genre = '1310') => {
     fetcher(url)
       .then((response) => response.json())
       .then((data) => {
-        const podcastsCollection = JSON.parse(data.contents)?.feed?.entry;
+        const podcastsCollection = data?.feed?.entry;
 
         setPodcasts(podcastsCollection);
       })
