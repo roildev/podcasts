@@ -11,11 +11,17 @@ function PodcastSidebar({ podcast, description }) {
       state: { description },
     });
 
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
+  const { imageMin, imageMax } = podcast.imageSrc;
+
+  const imageSrc = isDevelopment ? imageMin : imageMax;
+
   return (
     <>
       <div className="podcast-sb__item">
         <div className="podcast-sb__image">
-          <img src={podcast.imageSrc} alt={podcast.artistName} />
+          <img src={imageSrc} alt={podcast.artistName} />
         </div>
       </div>
       <div className="podcast-sb__item">

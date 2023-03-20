@@ -17,22 +17,27 @@ const useGetPodcastById = (podcastId) => {
     )}; expires=${expires}; path=/`;
   };
 
-  const podcastSerialize = (wrapperTrack, episodesCollection) => ({
-    id: podcastId,
-    imageSrc: [wrapperTrack?.artworkUrl100],
-    artistName: wrapperTrack.artistName,
-    collectionName: wrapperTrack.collectionName,
-    episodes: episodesCollection.map((episode) => ({
-      id: episode.trackId,
-      name: episode.trackName,
-      date: dateFormat(episode.releaseDate),
-      duration: millisToMinutes(episode.trackTimeMillis),
-      description: episode.description,
-      trackViewUrl: episode.trackViewUrl,
-      episodeUrl: episode.episodeUrl,
-      episodeType: `${episode.episodeContentType}/${episode.episodeFileExtension}`,
-    })),
-  });
+  const podcastSerialize = (wrapperTrack, episodesCollection) => {
+    const imageMin = wrapperTrack?.artworkUrl100;
+    const imageMax = wrapperTrack?.artworkUrl600;
+
+    return {
+      id: podcastId,
+      imageSrc: { imageMin, imageMax },
+      artistName: wrapperTrack.artistName,
+      collectionName: wrapperTrack.collectionName,
+      episodes: episodesCollection.map((episode) => ({
+        id: episode.trackId,
+        name: episode.trackName,
+        date: dateFormat(episode.releaseDate),
+        duration: millisToMinutes(episode.trackTimeMillis),
+        description: episode.description,
+        trackViewUrl: episode.trackViewUrl,
+        episodeUrl: episode.episodeUrl,
+        episodeType: `${episode.episodeContentType}/${episode.episodeFileExtension}`,
+      })),
+    };
+  };
 
   const getPodcastFromCookie = () => {
     const cookies = document.cookie.split('; ');
