@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
-
-import './Header.css';
 import { Link } from 'react-router-dom';
 
-function Header() {
+import { Loader } from '../Loader';
+
+import './Header.css';
+
+function Header({ isLoading }) {
   return (
     <div className="header">
-      <Link to="/">Podcaster</Link>
+      <Link to="/" className="main-title">
+        Podcaster
+      </Link>
+      {isLoading && <Loader />}
     </div>
   );
 }

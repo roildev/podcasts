@@ -1,14 +1,17 @@
 import React, { memo } from 'react';
+
 import Header from '../../components/Header/Header';
+import { ErrorMessage } from '../../components';
 
 import './MainContent.css';
 
-function MainLayout({ children }) {
+function MainLayout({ children, isLoading, error }) {
   return (
     <div className="container">
-      <Header />
-      <div className="content" />
-      {children}
+      <Header isLoading={isLoading} />
+      <div className="content">
+        {error ? <ErrorMessage error={error} /> : children}
+      </div>
     </div>
   );
 }

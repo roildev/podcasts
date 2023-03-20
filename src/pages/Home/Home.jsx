@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
 
-import { ErrorMessage, Input, Loader } from '../../components';
+import { Input } from '../../components';
 import { PodcastItem } from './components';
 import { MainLayout } from '../../layouts';
 
@@ -37,33 +37,30 @@ function Home() {
     setAllPodcasts(podcastsFiltered);
   }, [keyword]);
 
-  if (isLoading) return <Loader />;
-  if (error) return <ErrorMessage error={error} />;
-
-  if (!allPodcasts) return null;
-  // console.log('allPodcasts', allPodcasts);
   return (
-    <MainLayout>
-      <div className="home">
-        <div className="home__header">
-          <div className="home__search-group">
-            <div className="tag">100</div>
-            <Input
-              value={keyword}
-              onChange={setKeyword}
-              placeholder="Filter podcasts..."
-            />
+    <MainLayout isLoading={isLoading} error={error}>
+      {allPodcasts && (
+        <div className="home">
+          <div className="home__header">
+            <div className="home__search-group">
+              <div className="tag">100</div>
+              <Input
+                value={keyword}
+                onChange={setKeyword}
+                placeholder="Filter podcasts..."
+              />
+            </div>
+          </div>
+          <div className="home__content">
+            {allPodcasts.map((podcast) => (
+              <PodcastItem
+                key={podcast.id.attributes['im:id']}
+                podcast={podcast}
+              />
+            ))}
           </div>
         </div>
-        <div className="home__content">
-          {allPodcasts.map((podcast) => (
-            <PodcastItem
-              key={podcast.id.attributes['im:id']}
-              podcast={podcast}
-            />
-          ))}
-        </div>
-      </div>
+      )}
     </MainLayout>
   );
 }

@@ -1,0 +1,34 @@
+.podcast-sb__item {
+    padding: 20px;
+}
+
+.podcast-sb__item:not(:last-child) {
+    border-bottom: 1px solid gray;
+}
+
+.podcast-sb__image {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.podcast-sb__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.podcast-sb__title {
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.podcast-sb__subtitle {
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}

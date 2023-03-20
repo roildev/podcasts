@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Episode, Home, Podcast } from './pages';
 
 import './index.css';
+import { PodcastProvider } from './contexts';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <PodcastProvider>
+      <RouterProvider router={router} />
+    </PodcastProvider>
   </React.StrictMode>,
 );
 

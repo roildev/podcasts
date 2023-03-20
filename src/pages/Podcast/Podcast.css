@@ -13,48 +13,8 @@
     width: 25%;
 }
 
-.podcast-info__item {
-    padding: 20px;
-}
-
-.podcast-info__item:not(:last-child) {
-    border-bottom: 1px solid gray;
-}
-
-.podcast-info__image {
-    width: 90%;
-    margin: 0 auto;
-}
-
-.podcast-info__image img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.podcast-info__title {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.podcast-info__subtitle {
-    font-size: 14px;
-    font-style: italic;
-    color: gray;
-}
-
-.podcast-info__description-caption {
-    font-weight: bold;
-}
-
-.podcast-info__description {
-    font-size: 14px;
-    font-style: italic;
-    color: gray;
-}
-
 .podcast-episodes-info {
-    min-width: 70%;
+    width: 70%;
 }
 
 .podcast-episodes {

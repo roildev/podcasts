@@ -7,6 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.main-subtitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.main-description {
+  font-size: 14px;
+  font-style: italic;
+  color: gray;
+}
+
 a {
   color: #2F7BB0;
   text-decoration-color: transparent;
@@ -15,4 +31,9 @@ a {
 
 a:hover {
   text-decoration-color: #2F7BB0;
+}
+
+.block {
+  padding: 10px;
+  box-shadow: 0 0 5px 2px rgba(143,143,143,0.4);
 }

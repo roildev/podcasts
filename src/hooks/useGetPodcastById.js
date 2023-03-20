@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { dateFormat, fetcher, millisToMinutes } from '../utils';
 
 const useGetPodcastById = (podcastId) => {
@@ -26,6 +27,10 @@ const useGetPodcastById = (podcastId) => {
       name: episode.trackName,
       date: dateFormat(episode.releaseDate),
       duration: millisToMinutes(episode.trackTimeMillis),
+      description: episode.description,
+      trackViewUrl: episode.trackViewUrl,
+      episodeUrl: episode.episodeUrl,
+      episodeType: `${episode.episodeContentType}/${episode.episodeFileExtension}`,
     })),
   });
 
@@ -58,7 +63,7 @@ const useGetPodcastById = (podcastId) => {
     fetcher(url)
       .then((response) => response.json())
       .then((data) => {
-        if (data.results) {
+        if (data?.results) {
           const filteredEpisodes = data.results.filter(
             (item) => item.kind === 'podcast-episode',
           );

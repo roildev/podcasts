@@ -1,24 +1,31 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { PodcastContext } from '../../../../contexts/PodcastProvider';
 
 import './PodcastItem.css';
 
 function PodcastItem({ podcast }) {
+  const { setPodcastDescription } = useContext(PodcastContext);
+
   const srcImage = podcast['im:image'][1].label;
   const podcastId = podcast.id.attributes['im:id'];
-  // console.log('podcas t.summary. label', podcast.summary.label);
+  const description = podcast.summary.label;
+
   const navigate = useNavigate();
+
+  const handlePodcastClick = () => {
+    navigate(`/podcast/${podcastId}`);
+
+    setPodcastDescription(description);
+  };
 
   return (
     <div className="podcast-item">
       <button
         type="button"
         className="podcast-content"
-        onClick={() =>
-          navigate(`/podcast/${podcastId}`, {
-            state: { description: podcast.summary.label },
-          })
-        }
+        onClick={handlePodcastClick}
       >
         <img
           src={srcImage}
