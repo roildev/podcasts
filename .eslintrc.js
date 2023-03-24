@@ -16,5 +16,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 0,
     'react/no-array-index-key': 0,
+    'import/no-extraneous-dependencies': 0,
+    'no-unused-vars': 1,
   },
 };

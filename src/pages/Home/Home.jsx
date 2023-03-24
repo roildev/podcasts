@@ -43,7 +43,7 @@ function Home() {
         <div className="home">
           <div className="home__header">
             <div className="home__search-group">
-              <div className="tag">100</div>
+              <div className="tag">{allPodcasts.length}</div>
               <Input
                 value={keyword}
                 onChange={setKeyword}
